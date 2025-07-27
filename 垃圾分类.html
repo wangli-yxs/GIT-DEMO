@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>垃圾分类指南 - 共创绿色家园</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50',
+                        secondary: '#2196F3',
+                        hazardous: '#F44336',
+                        recyclable: '#FFC107',
+                        kitchen: '#8BC34A',
+                        other: '#9E9E9E',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+            }
+            .bg-gradient-green {
+                background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-recycle text-primary text-2xl"></i>
+                <h1 class="text-xl md:text-2xl font-bold text-primary">垃圾分类指南</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="font-medium text-gray-700 hover:text-primary transition-colors">首页</a>
+                <a href="#types" class="font-medium text-gray-700 hover:text-primary transition-colors">分类标准</a>
+                <a href="#importance" class="font-medium text-gray-700 hover:text-primary transition-colors">重要性</a>
+                <a href="#examples" class="font-medium text-gray-700 hover:text-primary transition-colors">常见物品分类</a>
+                <a href="#faq" class="font-medium text-gray-700 hover:text-primary transition-colors">常见问题</a>
+            </nav>
+            <button class="md:hidden text-gray-700" id="menuToggle">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-white shadow-lg absolute w-full" id="mobileMenu">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+                <a href="#home" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">首页</a>
+                <a href="#types" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">分类标准</a>
+                <a href="#importance" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">重要性</a>
+                <a href="#examples" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">常见物品分类</a>
+                <a href="#faq" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">常见问题</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区 -->
+    <section id="home" class="relative overflow-hidden bg-gradient-green text-white">
+        <div class="container mx-auto px-4 py-20 md:py-32 relative z-10">
+            <div class="max-w-3xl">
+                <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-shadow mb-6">
+                    垃圾分类，<br>让地球更美丽
+                </h2>
+                <p class="text-lg md:text-xl mb-8 text-white/90">
+                    正确的垃圾分类是环境保护的第一步。了解如何分类垃圾，为可持续发展贡献自己的力量。
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#types" class="bg-white text-primary font-medium px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        了解分类标准
+                    </a>
+                    <a href="#quiz" class="bg-transparent border-2 border-white text-white font-medium px-6 py-3 rounded-full hover:bg-white/10 transition-all">
+                        测试你的知识
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-50 to-transparent"></div>
+    </section>
+
+    <!-- 分类标准 -->
+    <section id="types" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">垃圾分类标准</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    根据《生活垃圾分类制度实施方案》，生活垃圾一般可分为四大类：可回收物、有害垃圾、厨余垃圾和其他垃圾。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 可回收物 -->
+                <div class="bg-blue-50 rounded-2xl p-6 shadow-md card-hover border-t-4 border-recyclable">
+                    <div class="w-14 h-14 bg-recyclable/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-recycle text-2xl text-recyclable"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-recyclable">可回收物</h3>
+                    <p class="text-gray-600 mb-4">
+                        适宜回收和资源利用的垃圾，包括废纸、塑料、玻璃、金属和布料等。
+                    </p>
+                    <a href="#recyclable" class="text-recyclable font-medium flex items-center">
+                        查看详细 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- 有害垃圾 -->
+                <div class="bg-red-50 rounded-2xl p-6 shadow-md card-hover border-t-4 border-hazardous">
+                    <div class="w-14 h-14 bg-hazardous/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-exclamation-triangle text-2xl text-hazardous"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-hazardous">有害垃圾</h3>
+                    <p class="text-gray-600 mb-4">
+                        含有有害物质，需要特殊安全处理的垃圾，包括电池、灯管和日用化学品等。
+                    </p>
+                    <a href="#hazardous" class="text-hazardous font-medium flex items-center">
+                        查看详细 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- 厨余垃圾 -->
+                <div class="bg-green-50 rounded-2xl p-6 shadow-md card-hover border-t-4 border-kitchen">
+                    <div class="w-14 h-14 bg-kitchen/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-cutlery text-2xl text-kitchen"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-kitchen">厨余垃圾</h3>
+                    <p class="text-gray-600 mb-4">
+                        厨房产生的有机易腐垃圾，包括剩菜剩饭、骨头、菜根菜叶等。
+                    </p>
+                    <a href="#kitchen" class="text-kitchen font-medium flex items-center">
+                        查看详细 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- 其他垃圾 -->
+                <div class="bg-gray-50 rounded-2xl p-6 shadow-md card-hover border-t-4 border-other">
+                    <div class="w-14 h-14 bg-other/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-trash text-2xl text-other"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-other">其他垃圾</h3>
+                    <p class="text-gray-600 mb-4">
+                        除上述几类垃圾之外的其他生活废弃物，包括砖瓦陶瓷、渣土、卫生间废纸等。
+                    </p>
+                    <a href="#other" class="text-other font-medium flex items-center">
+                        查看详细 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 重要性 -->
+    <section id="importance" class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">垃圾分类的重要性</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    垃圾分类是对垃圾收集处置传统方式的改革，是对垃圾进行有效处置的一种科学管理方法。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-6 shadow-md card-hover">
+                    <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-globe text-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">保护环境</h3>
+                    <p class="text-gray-600">
+                        减少土地侵蚀、降低污染、保护生态环境。通过分类投放、分类收集，把有用物资重新回收、利用、变废为宝。
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-md card-hover">
+                    <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-bolt text-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">节约资源</h3>
+                    <p class="text-gray-600">
+                        垃圾中的许多物质可以转化为资源，如食品、草木和织物可以堆肥，生产有机肥料；垃圾焚烧可以发电、供热或制冷等。
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-md card-hover">
+                    <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-users text-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">促进经济</h3>
+                    <p class="text-gray-600">
+                        垃圾分类创造了更多的就业机会和经济增长点。回收利用产业的发展不仅减少了资源的进口依赖，还为社会创造了财富。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-8 md:p-12 flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold mb-4">垃圾分类的经济效益</h3>
+                        <p class="text-gray-600 mb-6">
+                            据统计，每回收1吨废纸可造好纸850公斤，节省木材300公斤；每回收1吨塑料饮料瓶可获得0.7吨二级原料；每回收1吨废钢铁可炼好钢0.9吨，比用矿石冶炼节约成本47%。
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-primary rounded-full mr-3"></div>
+                                <span>减少资源开采，降低能源消耗</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-primary rounded-full mr-3"></div>
+                                <span>减少垃圾处理成本，延长填埋场使用寿命</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-primary rounded-full mr-3"></div>
+                                <span>创造更多的就业岗位和经济效益</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 p-8 md:p-12">
+                        <h4 class="text-xl font-bold mb-6">资源回收利用率对比</h4>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">废纸</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-blue-500 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">塑料</span>
+                                    <span>70%</span>
+                                </div>
+                                <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-purple-500 rounded-full" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">金属</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-yellow-500 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">玻璃</span>
+                                    <span>60%</span>
+                                </div>
+                                <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-green-500 rounded-full" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见物品分类 -->
+    <section id="examples" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">常见物品分类指南</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    了解日常生活中常见物品的垃圾分类，帮助你正确投放垃圾。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 可回收物示例 -->
+                <div id="recyclable" class="bg-blue-50 rounded-xl overflow-hidden shadow-md">
+                    <div class="bg-recyclable text-white p-4">
+                        <h3 class="text-xl font-bold flex items-center">
+                            <i class="fa fa-recycle mr-2"></i> 可回收物
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/paper/80/80" alt="废纸" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">废纸</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/plastic/80/80" alt="塑料瓶" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">塑料</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/glass/80/80" alt="玻璃瓶" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">玻璃</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/metal/80/80" alt="金属罐" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">金属</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/cloth/80/80" alt="衣物" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">布料</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/cardboard/80/80" alt="纸箱" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">纸板箱</span>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-gray-600 text-sm">
+                            可回收物应清洁干燥，避免污染。废纸应尽量平整，立体包装物应清空内容物，清洁后压扁投放。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 有害垃圾示例 -->
+                <div id="hazardous" class="bg-red-50 rounded-xl overflow-hidden shadow-md">
+                    <div class="bg-hazardous text-white p-4">
+                        <h3 class="text-xl font-bold flex items-center">
+                            <i class="fa fa-exclamation-triangle mr-2"></i> 有害垃圾
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/battery/80/80" alt="电池" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">电池</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/lightbulb/80/80" alt="灯泡" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">灯管</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/pills/80/80" alt="药品" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">药品</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/paint/80/80" alt="油漆桶" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">油漆桶</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/cosmetics/80/80" alt="化妆品" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">化妆品</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/pesticide/80/80" alt="杀虫剂" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">杀虫剂</span>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-gray-600 text-sm">
+                            有害垃圾需用特殊容器单独存放，避免混入其他垃圾。过期药品应保留原包装，废旧灯管等易破损的有害垃圾应包裹后投放。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 厨余垃圾示例 -->
+                <div id="kitchen" class="bg-green-50 rounded-xl overflow-hidden shadow-md">
+                    <div class="bg-kitchen text-white p-4">
+                        <h3 class="text-xl font-bold flex items-center">
+                            <i class="fa fa-cutlery mr-2"></i> 厨余垃圾
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/fruit/80/80" alt="水果皮" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">水果皮</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/vegetables/80/80" alt="蔬菜叶" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">蔬菜叶</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/leftovers/80/80" alt="剩菜剩饭" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">剩菜剩饭</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/bones/80/80" alt="骨头" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">骨头</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/tea/80/80" alt="茶叶渣" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">茶叶渣</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/coffee/80/80" alt="咖啡渣" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">咖啡渣</span>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-gray-600 text-sm">
+                            厨余垃圾应沥干水分，用厨余垃圾袋包装好后投放。有包装物的厨余垃圾应将包装物去除后分类投放。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 其他垃圾示例 -->
+                <div id="other" class="bg-gray-50 rounded-xl overflow-hidden shadow-md">
+                    <div class="bg-other text-white p-4">
+                        <h3 class="text-xl font-bold flex items-center">
+                            <i class="fa fa-trash mr-2"></i> 其他垃圾
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/toiletpaper/80/80" alt="卫生纸" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">卫生纸</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/diaper/80/80" alt="纸尿裤" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">纸尿裤</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/cigarette/80/80" alt="烟头" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">烟头</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/ceramic/80/80" alt="陶瓷碎片" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">陶瓷</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/dust/80/80" alt="尘土" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">尘土</span>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 text-center shadow-sm">
+                                <img src="https://picsum.photos/seed/brokenclock/80/80" alt="破碎钟表" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+                                <span class="text-sm">破旧物品</span>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-gray-600 text-sm">
+                            其他垃圾应尽量沥干水分，难以辨识类别的生活垃圾投入其他垃圾容器内。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section id="faq" class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">常见问题解答</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    解答您在垃圾分类过程中遇到的常见问题和疑惑。
+                </p>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-4">
+                <!-- FAQ 项目 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left font-medium text-gray-800 hover:bg-gray-50 transition-colors">
+                        <span>如何正确分类外卖垃圾？</span>
+                        <i class="fa fa-plus text-primary transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-gray-600">
+                            外卖垃圾应根据其成分进行分类：<br>
+                            1. 剩菜剩饭、骨头等食物残渣属于厨余垃圾；<br>
+                            2. 一次性餐具（如筷子、勺子）通常由竹子或塑料制成，应放入其他垃圾；<br>
+                            3. 塑料餐盒、饮料瓶等如果是干净的，可以作为可回收物投放；<br>
+                            4. 沾有油污的外卖盒和包装袋属于其他垃圾。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left font-medium text-gray-800 hover:bg-gray-50 transition-colors">
+                        <span>废电池都属于有害垃圾吗？</span>
+                        <i class="fa fa-plus text-primary transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-gray-600">
+                            并非所有废电池都属于有害垃圾：<br>
+                            1. 传统的干电池（如5号、7号电池）已实现无汞或低汞，现在通常作为其他垃圾处理；<br>
+                            2. 充电电池、纽扣电池、锂电池等含有重金属，属于有害垃圾；<br>
+                            3. 汽车电瓶等大型电池应交给专业的回收机构处理。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left font-medium text-gray-800 hover:bg-gray-50 transition-colors">
+                        <span>卫生纸和纸巾属于可回收物吗？</span>
+                        <i class="fa fa-plus text-primary transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-gray-600">
+                            卫生纸和纸巾不属于可回收物：<br>
+                            1. 卫生纸和纸巾由于水溶性太强，通常不可回收，应放入其他垃圾；<br>
+                            2. 干净的纸张、报纸、纸箱等属于可回收物；<br>
+                            3. 被油污污染的纸张（如披萨盒）属于其他垃圾。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left font-medium text-gray-800 hover:bg-gray-50 transition-colors">
+                        <span>如何处理过期药品？</span>
+                        <i class="fa fa-plus text-primary transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-gray-600">
+                            过期药品属于有害垃圾，处理时需注意：<br>
+                            1. 应保留原包装，不要随意拆开或混合不同药品；<br>
+                            2. 口服液等液体药品应防止泄漏，可密封后投放；<br>
+                            3. 部分药店和社区设有过期药品回收点，可将过期药品交至这些回收点进行专业处理；<br>
+                            4. 不要将过期药品随意丢弃或冲入下水道。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left font-medium text-gray-800 hover:bg-gray-50 transition-colors">
+                        <span>如何判断一件物品该放入哪种垃圾桶？</span>
+                        <i class="fa fa-plus text-primary transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <p class="text-gray-600">
+                            判断一件物品的分类可以遵循以下步骤：<br>
+                            1. 首先看是否可以回收再利用，如纸张、塑料、金属等，属于可回收物；<br>
+                            2. 检查是否含有有害物质，如电池、灯管、药品等，属于有害垃圾；<br>
+                            3. 是否是厨房产生的有机易腐垃圾，如剩菜剩饭、果皮等，属于厨余垃圾；<br>
+                            4. 如果以上都不是，则放入其他垃圾。<br>
+                            如果仍然不确定，可以查询当地的垃圾分类指南或使用相关的手机应用程序辅助判断。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 测试你的知识 -->
+    <section id="quiz" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 mb-4">测试你的垃圾分类知识</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    通过这个小测验，检验你对垃圾分类的了解程度。
+                </p>
+            </div>
+
+            <div class="max-w-3xl mx-auto bg-gray-50 rounded-2xl shadow-md p-8">
+                <div class="quiz-container">
+                    <div class="quiz-question mb-8">
+                        <h3 class="text-xl font-bold mb-4" id="question-text">1. 以下哪种物品属于可回收物？</h3>
+                        <div class="space-y-3" id="options-container">
+                            <button class="quiz-option w-full text-left p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow" data-correct="true">
+                                塑料瓶
+                            </button>
+                            <button class="quiz-option w-full text-left p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                纸尿裤
+                            </button>
+                            <button class="quiz-option w-full text-left p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                烟头
+                            </button>
+                            <button class="quiz-option w-full text-left p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                                茶叶渣
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="quiz-feedback hidden mb-6 p-4 rounded-lg" id="feedback">
+                        <div class="flex items-start">
+                            <i class="fa fa-check-circle text-green-500 text-xl mt-0.5 mr-3" id="feedback-icon"></i>
+                            <div>
+                                <h4 class="font-bold text-green-500" id="feedback-title">回答正确！</h4>
+                                <p class="text-gray-600" id="feedback-text">塑料瓶属于可回收物，可以回收再利用制造新的塑料制品。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between mt-8">
+                        <button class="bg-gray-200 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-300 transition-colors" id="prev-btn" disabled>
+                            上一题
+                        </button>
+                        <button class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors" id="next-btn">
+                            下一题
+                        </button>
+                    </div>
+                </div>
+
+                <div class="quiz-results hidden text-center py-8" id="results">
+                    <div class="mb-6">
+                        <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-primary/20 text-primary text-4xl font-bold">
+                            <span id="score">0</span>/<span id="total">0</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">测验完成！</h3>
+                    <p class="text-gray-600 mb-6">你对垃圾分类的知识掌握得很不错！继续保持环保习惯。</p>
+                    <button class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors" id="restart-btn">
+                        重新开始
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动呼吁 -->
+    <section class="py-16 md:py-24 bg-gradient-green text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-6">让我们一起行动，共创绿色家园</h2>
+            <p class="text-xl text-white/90 max-w-2xl mx-auto mb-10">
+                每一个小小的分类动作，都是对地球的大爱。从今天开始，让垃圾分类成为我们的生活习惯。
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#" class="bg-white text-primary font-medium px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                    下载垃圾分类指南手册
+                </a>
+                <a href="#" class="bg-transparent border-2 border-white text-white font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-all">
+                    分享给朋友
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i class="fa fa-recycle text-primary text-2xl"></i>
+                        <h3 class="text-xl font-bold">垃圾分类指南</h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        提供全面的垃圾分类知识，帮助你轻松掌握垃圾分类方法，为环保贡献一份力量。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-wechat text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6">快速链接</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="#types" class="text-gray-400 hover:text-white transition-colors">分类标准</a></li>
+                        <li><a href="#importance" class="text-gray-400 hover:text-white transition-colors">重要性</a></li>
+                        <li><a href="#examples" class="text-gray-400 hover:text-white transition-colors">常见物品分类</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white transition-colors">常见问题</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6">资源</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">下载指南</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">社区活动</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">教育资源</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">企业合作</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6">订阅更新</h4>
+                    <p class="text-gray-400 mb-4">
+                        订阅我们的通讯，获取最新的垃圾分类资讯和活动信息。
+                    </p>
+                    <form class="mb-4">
+                        <div class="flex">
+                            <input type="email" placeholder="输入你的邮箱" class="bg-gray-700 text-white px-4 py-2 rounded-l-lg w-full focus:outline-none focus:ring-2 focus:ring-primary">
+                            <button type="submit" class="bg-primary text-white px-4 py-2 rounded-r-lg hover:bg-primary/90 transition-colors">
+                                订阅
+                            </button>
+                        </div>
+                    </form>
+                    <p class="text-gray-400 text-sm">
+                        我们尊重您的隐私，不会向第三方分享您的信息。
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 垃圾分类指南. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('py-2', 'shadow');
+                navbar.classList.remove('py-3');
+            } else {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-2', 'shadow');
+            }
+        });
+
+        // 移动端菜单
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuToggle.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    // 关闭移动菜单
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        const icon = menuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+        });
+
+        // FAQ 手风琴效果
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                content.classList.toggle('hidden');
+                if (content.classList.contains('hidden')) {
+                    icon.classList.remove('fa-minus', 'rotate-45');
+                    icon.classList.add('fa-plus');
+                } else {
+                    icon.classList.remove('fa-plus');
+                    icon.classList.add('fa-minus', 'rotate-45');
+                }
+            });
+        });
+
+        // 测验功能
+        const quizQuestions = [
+            {
+                question: "1. 以下哪种物品属于可回收物？",
+                options: [
+                    { text: "塑料瓶", correct: true },
+                    { text: "纸尿裤", correct: false },
+                    { text: "烟头", correct: false },
+                    { text: "茶叶渣", correct: false }
+                ],
+                feedback: "回答正确！塑料瓶属于可回收物，可以回收再利用制造新的塑料制品。"
+            },
+            {
+                question: "2. 过期药品应该放入哪个垃圾桶？",
+                options: [
+                    { text: "可回收物", correct: false },
+                    { text: "有害垃圾", correct: true },
+                    { text: "厨余垃圾", correct: false },
+                    { text: "其他垃圾", correct: false }
+                ],
+                feedback: "回答正确！过期药品含有有害物质，属于有害垃圾，需要特殊处理。"
+            },
+            {
+                question: "3. 以下哪种属于厨余垃圾？",
+                options: [
+                    { text: "用过的纸巾", correct: false },
+                    { text: "剩菜剩饭", correct: true },
+                    { text: "玻璃瓶", correct: false },
+                    { text: "旧衣服", correct: false }
+                ],
+                feedback: "回答正确！剩菜剩饭是厨房产生的有机易腐垃圾，属于厨余垃圾。"
+            },
+            {
+                question: "4. 废电池属于什么垃圾？",
+                options: [
+                    { text: "可回收物", correct: false },
+                    { text: "有害垃圾", correct: true },
+                    { text: "厨余垃圾", correct: false },
+                    { text: "其他垃圾", correct: false }
+                ],
+                feedback: "回答正确！废电池含有重金属等有害物质，属于有害垃圾。"
+            },
+            {
+                question: "5. 以下哪种物品属于其他垃圾？",
+                options: [
+                    { text: "报纸", correct: false },
+                    { text: "陶瓷碎片", correct: true },
+                    { text: "易拉罐", correct: false },
+                    { text: "香蕉皮", correct: false }
+                ],
+                feedback: "回答正确！陶瓷碎片属于其他垃圾，难以回收利用。"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answered = false;
+
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const feedback = document.getElementById('feedback');
+        const feedbackTitle = document.getElementById('feedback-title');
+        const feedbackText = document.getElementById('feedback-text');
+        const feedbackIcon = document.getElementById('feedback-icon');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const resultsContainer = document.getElementById('results');
+        const scoreElement = document.getElementById('score');
+        const totalElement = document.getElementById('total');
+        const restartBtn = document.getElementById('restart-btn');
+        const quizContainer = document.querySelector('.quiz-container');
+
+        function loadQuestion(index) {
+            const question = quizQuestions[index];
+            questionText.textContent = question.question;
+            optionsContainer.innerHTML = '';
+            feedback.classList.add('hidden');
+            answered = false;
+
+            question.options.forEach(option => {
+                const button = document.createElement('button');
+                button.className = 'quiz-option w-full text-left p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow';
+                button.textContent = option.text;
+                button.dataset.correct = option.correct;
+
+                button.addEventListener('click', () => {
+                    if (answered) return;
+                    answered = true;
+
+                    const isCorrect = button.dataset.correct === 'true';
+                    if (isCorrect) {
+                        score++;
+                        button.classList.add('bg-green-100', 'border-green-500', 'border');
+                    } else {
+                        button.classList.add('bg-red-100', 'border-red-500', 'border');
+                        // 显示正确答案
+                        Array.from(optionsContainer.children).forEach(opt => {
+                            if (opt.dataset.correct === 'true') {
+                                opt.classList.add('bg-green-100', 'border-green-500', 'border');
+                            }
+                        });
+                    }
+
+                    feedback.classList.remove('hidden');
+                    feedbackTitle.textContent = isCorrect ? '回答正确！' : '回答错误';
+                    feedbackText.textContent = question.feedback;
+                    feedbackIcon.className = isCorrect ? 'fa fa-check-circle text-green-500 text-xl mt-0.5 mr-3' : 'fa fa-times-circle text-red-500 text-xl mt-0.5 mr-3';
+                });
+
+                optionsContainer.appendChild(button);
+            });
+
+            // 更新按钮状态
+            prevBtn.disabled = index === 0;
+            nextBtn.textContent = index === quizQuestions.length - 1 ? '完成测验' : '下一题';
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            scoreElement.textContent = score;
+            totalElement.textContent = quizQuestions.length;
+        }
+
+        // 初始化测验
+        loadQuestion(currentQuestionIndex);
+
+        // 上一题按钮
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion(currentQuestionIndex);
+            }
+        });
+
+        // 下一题按钮
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < quizQuestions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion(currentQuestionIndex);
+            } else {
+                showResults();
+            }
+        });
+
+        // 重新开始按钮
+        restartBtn.addEventListener('click', () => {
+            currentQuestionIndex = 0;
+            score = 0;
+            resultsContainer.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            loadQuestion(currentQuestionIndex);
+        });
+    </script>
+</body>
+</html>
+    
